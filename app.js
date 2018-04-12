@@ -88,19 +88,10 @@ const pigGame = {
 };
 
 //Event handlers
-resetButton.addEventListener('click', () => {
-  pigGame.resetGame();
-});
-
-rollButton.addEventListener('click', () => {
-  pigGame.rollDice();
-});
-
-holdButton.addEventListener('click', () => {
-  pigGame.holdScore();
-});
+resetButton.addEventListener('click', pigGame.resetGame);
+rollButton.addEventListener('click', pigGame.rollDice);
+holdButton.addEventListener('click', pigGame.holdScore);
   
-
 // Display in the DOM
 const view = {
   displayDiceFace: diceResult => {
