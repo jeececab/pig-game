@@ -49,6 +49,7 @@ const pigGame = {
     activePlayer = playerOne;
     view.displayReset();
     view.displayActivePlayer();
+    gameOn = true;
   },
   switchPlayer: () => {
     if (activePlayer === playerOne) {
@@ -77,20 +78,17 @@ const pigGame = {
     activePlayer.currentScore = 0;
     view.displayCurrentScore(activePlayer.currentScore);
     view.displayTotalScore(activePlayer.totalScore);
-    if (activePlayer.totalScore >= 100) {
+    if (activePlayer.totalScore >= 20) {
       activePlayer.name = 'WINNER!'
       view.displayWinner();
+      gameOn = false;
+      console.log(gameOn);
     } else {
       pigGame.switchPlayer();
       view.displayActivePlayer();
     };
   }
 };
-
-//Event handlers
-resetButton.addEventListener('click', pigGame.resetGame);
-rollButton.addEventListener('click', pigGame.rollDice);
-holdButton.addEventListener('click', pigGame.holdScore);
   
 // Display in the DOM
 const view = {
@@ -142,6 +140,20 @@ const view = {
   }
 };
 
+//Event handlers
+resetButton.addEventListener('click', pigGame.resetGame);
+rollButton.addEventListener('click', () => {
+  if (gameOn) {
+    pigGame.rollDice();
+  };
+});
+holdButton.addEventListener('click', () => {
+  if (gameOn) { 
+    pigGame.holdScore();
+  };
+});
+
 // Default when the page is loaded
 let activePlayer = playerOne;
+let gameOn = true;
 view.displayReset();
