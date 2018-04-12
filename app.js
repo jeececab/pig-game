@@ -78,7 +78,7 @@ const pigGame = {
     activePlayer.currentScore = 0;
     view.displayCurrentScore(activePlayer.currentScore);
     view.displayTotalScore(activePlayer.totalScore);
-    if (activePlayer.totalScore >= 20) {
+    if (activePlayer.totalScore >= 100) {
       activePlayer.name = 'WINNER!'
       view.displayWinner();
       gameOn = false;
